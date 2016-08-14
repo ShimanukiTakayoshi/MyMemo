@@ -1,1 +1,11 @@
 c:\users\shima\documents\visual studio 2015\Projects\MyMemoX\MyMemoX\bin\Debug\MyMemoX.exe.config
+C:\Users\Shima\Documents\Visual Studio 2015\Projects\MyMemoX\MyMemoX\bin\Debug\MyMemoX.exe
+C:\Users\Shima\Documents\Visual Studio 2015\Projects\MyMemoX\MyMemoX\bin\Debug\MyMemoX.pdb
+C:\Users\Shima\Documents\Visual Studio 2015\Projects\MyMemoX\MyMemoX\bin\Debug\MyMemoX.xml
+C:\Users\Shima\Documents\Visual Studio 2015\Projects\MyMemoX\MyMemoX\obj\Debug\MyMemoX.vbprojResolveAssemblyReference.cache
+C:\Users\Shima\Documents\Visual Studio 2015\Projects\MyMemoX\MyMemoX\obj\Debug\MyMemoX.Resources.resources
+C:\Users\Shima\Documents\Visual Studio 2015\Projects\MyMemoX\MyMemoX\obj\Debug\MyMemoX.vbproj.GenerateResource.Cache
+C:\Users\Shima\Documents\Visual Studio 2015\Projects\MyMemoX\MyMemoX\obj\Debug\MyMemoX.exe
+C:\Users\Shima\Documents\Visual Studio 2015\Projects\MyMemoX\MyMemoX\obj\Debug\MyMemoX.xml
+C:\Users\Shima\Documents\Visual Studio 2015\Projects\MyMemoX\MyMemoX\obj\Debug\MyMemoX.pdb
+C:\Users\Shima\Documents\Visual Studio 2015\Projects\MyMemoX\MyMemoX\obj\Debug\MyMemoX.Form1.resources
