@@ -24,14 +24,15 @@ Partial Class Form1
   Private Sub InitializeComponent()
     Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
     Me.MenuItemFile = New System.Windows.Forms.ToolStripMenuItem()
-    Me.MenuItemExit = New System.Windows.Forms.ToolStripMenuItem()
-    Me.TextBoxMain = New System.Windows.Forms.TextBox()
     Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
     Me.MenuItemFileOpen = New System.Windows.Forms.ToolStripMenuItem()
     Me.MenuItemSave = New System.Windows.Forms.ToolStripMenuItem()
     Me.MenuItemFileSaveAs = New System.Windows.Forms.ToolStripMenuItem()
     Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+    Me.MenuItemExit = New System.Windows.Forms.ToolStripMenuItem()
+    Me.TextBoxMain = New System.Windows.Forms.TextBox()
     Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+    Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
     Me.MenuStrip1.SuspendLayout()
     Me.SuspendLayout()
     '
@@ -50,19 +51,6 @@ Partial Class Form1
     Me.MenuItemFile.Name = "MenuItemFile"
     Me.MenuItemFile.Size = New System.Drawing.Size(66, 20)
     Me.MenuItemFile.Text = "ファイル(&F)"
-    '
-    'MenuItemExit
-    '
-    Me.MenuItemExit.Name = "MenuItemExit"
-    Me.MenuItemExit.Size = New System.Drawing.Size(186, 22)
-    Me.MenuItemExit.Text = "終了(&X)"
-    '
-    'TextBoxMain
-    '
-    Me.TextBoxMain.Location = New System.Drawing.Point(42, 38)
-    Me.TextBoxMain.Name = "TextBoxMain"
-    Me.TextBoxMain.Size = New System.Drawing.Size(100, 19)
-    Me.TextBoxMain.TabIndex = 1
     '
     'ToolStripMenuItem1
     '
@@ -96,6 +84,19 @@ Partial Class Form1
     Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
     Me.ToolStripSeparator1.Size = New System.Drawing.Size(183, 6)
     '
+    'MenuItemExit
+    '
+    Me.MenuItemExit.Name = "MenuItemExit"
+    Me.MenuItemExit.Size = New System.Drawing.Size(186, 22)
+    Me.MenuItemExit.Text = "終了(&X)"
+    '
+    'TextBoxMain
+    '
+    Me.TextBoxMain.Location = New System.Drawing.Point(42, 38)
+    Me.TextBoxMain.Name = "TextBoxMain"
+    Me.TextBoxMain.Size = New System.Drawing.Size(100, 19)
+    Me.TextBoxMain.TabIndex = 1
+    '
     'OpenFileDialog1
     '
     Me.OpenFileDialog1.FileName = "OpenFileDialog1"
@@ -127,4 +128,5 @@ Partial Class Form1
   Friend WithEvents MenuItemFileSaveAs As ToolStripMenuItem
   Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
   Friend WithEvents OpenFileDialog1 As OpenFileDialog
+  Friend WithEvents SaveFileDialog1 As SaveFileDialog
 End Class
