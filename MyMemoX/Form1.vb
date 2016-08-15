@@ -1,5 +1,7 @@
 ﻿Public Class Form1
-
+  Const ApplicationName = "MyMemo"
+  Const RegistryKey As String = "Software\NikkeiSoftware\" & ApplicationName
+  Private FilePath As String
   Private FileNameValue As String
 
   Private Property FileName As String
@@ -8,6 +10,9 @@
     End Get
     Set(value As String)
       FileNameValue = value
+      If value <> "" Then
+        FilePath = IO.Path.GetDirectoryName(value)
+      End If
       Edited = False
     End Set
   End Property
@@ -45,15 +50,17 @@
     End If
   End Sub
 
-  Const ApplicationName = "MyMemo"
-
-
   Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
     FileName = ""
     TextBoxMain.Multiline = True
     TextBoxMain.ScrollBars = ScrollBars.Vertical
     TextBoxMain.Dock = DockStyle.Fill
     SaveFileDialog1.Filter = "テキスト文書|*.txt|すべてのファイル|*.*"
+    If 1 < Environment.GetCommandLineArgs.Length Then
+      LoadFile(Environment.GetCommandLineArgs(1))
+    End If
+    Dim regKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(RegistryKey)
+    FilePath = regKey.GetValue("FilePath", Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments))
   End Sub
 
   Private Sub MenuItemExit_Click(sender As Object, e As EventArgs) Handles MenuItemExit.Click
@@ -61,6 +68,7 @@
   End Sub
 
   Private Sub MenuItemFileOpen_Click(sender As Object, e As EventArgs) Handles MenuItemFileOpen.Click
+    OpenFileDialog1.InitialDirectory = FilePath
     OpenFileDialog1.FileName = ""
     If DialogResult.OK = OpenFileDialog1.ShowDialog Then
       LoadFile(OpenFileDialog1.FileName)
@@ -69,11 +77,19 @@
   End Sub
 
   Private Sub LoadFile(value As String)
+    If System.IO.File.Exists(value) Then
+      TextBoxMain.Text = System.IO.File.ReadAllText(value, System.Text.Encoding.GetEncoding("Shift_JIS"))
+      TextBoxMain.Select(0, 0)
+      FileName = value
+    Else
+      MessageBox.Show(value & "が見つかりません", ApplicationName)
+    End If
     TextBoxMain.Text = System.IO.File.ReadAllText(value, System.Text.Encoding.GetEncoding("Shift_JIS"))
     FileName = value
   End Sub
 
   Private Sub MenuItemFileSaveAs_Click(sender As Object, e As EventArgs) Handles MenuItemFileSaveAs.Click
+    SaveFileDialog1.InitialDirectory = FilePath
     SaveFileDialog1.FileName = System.IO.Path.GetFileName(FileName)
     If DialogResult.OK = SaveFileDialog1.ShowDialog Then
       SaveFile(SaveFileDialog1.FileName)
@@ -110,5 +126,10 @@
     If Not AskGiveUpText() Then Exit Sub
     TextBoxMain.Clear()
     FileName = ""
+  End Sub
+
+  Private Sub Form1_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+    Dim regKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(RegistryKey)
+    regKey.SetValue("FilePath", FilePath)
   End Sub
 End Class
