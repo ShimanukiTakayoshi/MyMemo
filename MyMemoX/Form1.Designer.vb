@@ -30,15 +30,18 @@ Partial Class Form1
     Me.MenuItemFileSaveAs = New System.Windows.Forms.ToolStripMenuItem()
     Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
     Me.MenuItemExit = New System.Windows.Forms.ToolStripMenuItem()
+    Me.設定SToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+    Me.MenuItemSettingFont = New System.Windows.Forms.ToolStripMenuItem()
     Me.TextBoxMain = New System.Windows.Forms.TextBox()
     Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
     Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
+    Me.FontDialog1 = New System.Windows.Forms.FontDialog()
     Me.MenuStrip1.SuspendLayout()
     Me.SuspendLayout()
     '
     'MenuStrip1
     '
-    Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuItemFile})
+    Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuItemFile, Me.設定SToolStripMenuItem})
     Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
     Me.MenuStrip1.Name = "MenuStrip1"
     Me.MenuStrip1.Size = New System.Drawing.Size(284, 24)
@@ -90,6 +93,19 @@ Partial Class Form1
     Me.MenuItemExit.Size = New System.Drawing.Size(186, 22)
     Me.MenuItemExit.Text = "終了(&X)"
     '
+    '設定SToolStripMenuItem
+    '
+    Me.設定SToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuItemSettingFont})
+    Me.設定SToolStripMenuItem.Name = "設定SToolStripMenuItem"
+    Me.設定SToolStripMenuItem.Size = New System.Drawing.Size(57, 20)
+    Me.設定SToolStripMenuItem.Text = "設定(&S)"
+    '
+    'MenuItemSettingFont
+    '
+    Me.MenuItemSettingFont.Name = "MenuItemSettingFont"
+    Me.MenuItemSettingFont.Size = New System.Drawing.Size(152, 22)
+    Me.MenuItemSettingFont.Text = "フォント(&F)"
+    '
     'TextBoxMain
     '
     Me.TextBoxMain.Location = New System.Drawing.Point(42, 38)
@@ -129,4 +145,7 @@ Partial Class Form1
   Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
   Friend WithEvents OpenFileDialog1 As OpenFileDialog
   Friend WithEvents SaveFileDialog1 As SaveFileDialog
+  Friend WithEvents 設定SToolStripMenuItem As ToolStripMenuItem
+  Friend WithEvents MenuItemSettingFont As ToolStripMenuItem
+  Friend WithEvents FontDialog1 As FontDialog
 End Class

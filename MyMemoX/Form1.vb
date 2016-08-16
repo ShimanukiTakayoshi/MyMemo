@@ -61,6 +61,8 @@
     End If
     Dim regKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(RegistryKey)
     FilePath = regKey.GetValue("FilePath", Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments))
+    FontDialog1.ShowEffects = False
+    FontDialog1.AllowScriptChange = False
   End Sub
 
   Private Sub MenuItemExit_Click(sender As Object, e As EventArgs) Handles MenuItemExit.Click
@@ -131,5 +133,12 @@
   Private Sub Form1_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
     Dim regKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(RegistryKey)
     regKey.SetValue("FilePath", FilePath)
+  End Sub
+
+  Private Sub MenuItemSettingFont_Click(sender As Object, e As EventArgs) Handles MenuItemSettingFont.Click
+    FontDialog1.Font = TextBoxMain.Font
+    If DialogResult.OK = FontDialog1.ShowDialog() Then
+      TextBoxMain.Font = FontDialog1.Font
+    End If
   End Sub
 End Class
