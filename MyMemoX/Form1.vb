@@ -63,6 +63,18 @@
     FilePath = regKey.GetValue("FilePath", Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments))
     FontDialog1.ShowEffects = False
     FontDialog1.AllowScriptChange = False
+    Dim name As String = regKey.GetValue("FontName", "ＭＳ ゴシック")
+    Dim size As Integer = regKey.GetValue("FontSize", 12)
+    Dim bold As String = regKey.GetValue("FontBold", False)
+    Dim italic As String = regKey.GetValue("FontItalic", False)
+    Dim style As FontStyle
+    If bold Then style = FontStyle.Bold
+    If italic Then style = style Or FontStyle.Italic
+    TextBoxMain.Font = New Font(name, size, style)
+    Const initialWidth = 400
+    Const initialHeight = 200
+    Me.MinimumSize = New Size(initialWidth, initialHeight)
+    MenuItemEdit_DropDownOpening(sender, e)
   End Sub
 
   Private Sub MenuItemExit_Click(sender As Object, e As EventArgs) Handles MenuItemExit.Click
@@ -133,6 +145,10 @@
   Private Sub Form1_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
     Dim regKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(RegistryKey)
     regKey.SetValue("FilePath", FilePath)
+    regKey.SetValue("FontName", TextBoxMain.Font.Name)
+    regKey.SetValue("FontSize", TextBoxMain.Font.Size)
+    regKey.SetValue("FontBold", TextBoxMain.Font.Bold)
+    regKey.SetValue("FontItalic", TextBoxMain.Font.Italic)
   End Sub
 
   Private Sub MenuItemSettingFont_Click(sender As Object, e As EventArgs) Handles MenuItemSettingFont.Click
@@ -140,5 +156,43 @@
     If DialogResult.OK = FontDialog1.ShowDialog() Then
       TextBoxMain.Font = FontDialog1.Font
     End If
+  End Sub
+
+  Private Sub MenuItemEditUndo_Click(sender As Object, e As EventArgs) Handles MenuItemEditUndo.Click
+    TextBoxMain.Undo()
+  End Sub
+
+  Private Sub MenuItemEditCut_Click(sender As Object, e As EventArgs) Handles MenuItemEditCut.Click
+    TextBoxMain.Cut()
+  End Sub
+
+  Private Sub MenuItemEditCopy_Click(sender As Object, e As EventArgs) Handles MenuItemEditCopy.Click
+    TextBoxMain.Copy()
+  End Sub
+
+  Private Sub MenuItemEditPaste_Click(sender As Object, e As EventArgs) Handles MenuItemEditPaste.Click
+    TextBoxMain.Paste()
+  End Sub
+
+  Private Sub MenuItemEditDelete_Click(sender As Object, e As EventArgs) Handles MenuItemEditDelete.Click
+    TextBoxMain.SelectedText = ""
+  End Sub
+
+  Private Sub MenuItemEditSelectAll_Click(sender As Object, e As EventArgs) Handles MenuItemEditSelectAll.Click
+    TextBoxMain.SelectAll()
+  End Sub
+
+  Private Sub MenuItemEdit_DropDownOpening(sender As Object, e As EventArgs) Handles MenuItemEdit.DropDownOpening
+    MenuItemEditPaste.Enabled = Clipboard.ContainsText
+    Dim b = TextBoxMain.SelectionLength = 0
+    MenuItemEditCut.Enabled = Not b
+    MenuItemEditCopy.Enabled = Not b
+    MenuItemEditDelete.Enabled = Not b
+    b = TextBoxMain.TextLength = 0
+    MenuItemEditSelectAll.Enabled = Not b
+  End Sub
+
+  Private Sub MenuItemEdit_DropDownClosed(sender As Object, e As EventArgs) Handles MenuItemEdit.DropDownClosed
+    MenuItemEditDelete.Enabled = False
   End Sub
 End Class

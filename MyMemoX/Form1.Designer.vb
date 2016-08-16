@@ -36,12 +36,20 @@ Partial Class Form1
     Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
     Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
     Me.FontDialog1 = New System.Windows.Forms.FontDialog()
+    Me.MenuItemEdit = New System.Windows.Forms.ToolStripMenuItem()
+    Me.MenuItemEditUndo = New System.Windows.Forms.ToolStripMenuItem()
+    Me.MenuItemEditCut = New System.Windows.Forms.ToolStripMenuItem()
+    Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+    Me.MenuItemEditCopy = New System.Windows.Forms.ToolStripMenuItem()
+    Me.MenuItemEditPaste = New System.Windows.Forms.ToolStripMenuItem()
+    Me.MenuItemEditDelete = New System.Windows.Forms.ToolStripMenuItem()
+    Me.MenuItemEditSelectAll = New System.Windows.Forms.ToolStripMenuItem()
     Me.MenuStrip1.SuspendLayout()
     Me.SuspendLayout()
     '
     'MenuStrip1
     '
-    Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuItemFile, Me.設定SToolStripMenuItem})
+    Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuItemFile, Me.MenuItemEdit, Me.設定SToolStripMenuItem})
     Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
     Me.MenuStrip1.Name = "MenuStrip1"
     Me.MenuStrip1.Size = New System.Drawing.Size(284, 24)
@@ -117,6 +125,60 @@ Partial Class Form1
     '
     Me.OpenFileDialog1.FileName = "OpenFileDialog1"
     '
+    'MenuItemEdit
+    '
+    Me.MenuItemEdit.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuItemEditUndo, Me.ToolStripSeparator2, Me.MenuItemEditCut, Me.MenuItemEditCopy, Me.MenuItemEditPaste, Me.MenuItemEditDelete, Me.MenuItemEditSelectAll})
+    Me.MenuItemEdit.Name = "MenuItemEdit"
+    Me.MenuItemEdit.Size = New System.Drawing.Size(57, 20)
+    Me.MenuItemEdit.Text = "編集(&E)"
+    '
+    'MenuItemEditUndo
+    '
+    Me.MenuItemEditUndo.Name = "MenuItemEditUndo"
+    Me.MenuItemEditUndo.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Z), System.Windows.Forms.Keys)
+    Me.MenuItemEditUndo.Size = New System.Drawing.Size(183, 22)
+    Me.MenuItemEditUndo.Text = "元に戻す(&U)"
+    '
+    'MenuItemEditCut
+    '
+    Me.MenuItemEditCut.Name = "MenuItemEditCut"
+    Me.MenuItemEditCut.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.X), System.Windows.Forms.Keys)
+    Me.MenuItemEditCut.Size = New System.Drawing.Size(183, 22)
+    Me.MenuItemEditCut.Text = "切り取り(&X)"
+    '
+    'ToolStripSeparator2
+    '
+    Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+    Me.ToolStripSeparator2.Size = New System.Drawing.Size(180, 6)
+    '
+    'MenuItemEditCopy
+    '
+    Me.MenuItemEditCopy.Name = "MenuItemEditCopy"
+    Me.MenuItemEditCopy.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.C), System.Windows.Forms.Keys)
+    Me.MenuItemEditCopy.Size = New System.Drawing.Size(183, 22)
+    Me.MenuItemEditCopy.Text = "コピー(&C)"
+    '
+    'MenuItemEditPaste
+    '
+    Me.MenuItemEditPaste.Name = "MenuItemEditPaste"
+    Me.MenuItemEditPaste.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.V), System.Windows.Forms.Keys)
+    Me.MenuItemEditPaste.Size = New System.Drawing.Size(183, 22)
+    Me.MenuItemEditPaste.Text = "貼り付け(&P)"
+    '
+    'MenuItemEditDelete
+    '
+    Me.MenuItemEditDelete.Name = "MenuItemEditDelete"
+    Me.MenuItemEditDelete.ShortcutKeys = System.Windows.Forms.Keys.Delete
+    Me.MenuItemEditDelete.Size = New System.Drawing.Size(183, 22)
+    Me.MenuItemEditDelete.Text = "削除(&L)"
+    '
+    'MenuItemEditSelectAll
+    '
+    Me.MenuItemEditSelectAll.Name = "MenuItemEditSelectAll"
+    Me.MenuItemEditSelectAll.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.A), System.Windows.Forms.Keys)
+    Me.MenuItemEditSelectAll.Size = New System.Drawing.Size(183, 22)
+    Me.MenuItemEditSelectAll.Text = "すべて選択(&A)"
+    '
     'Form1
     '
     Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
@@ -148,4 +210,12 @@ Partial Class Form1
   Friend WithEvents 設定SToolStripMenuItem As ToolStripMenuItem
   Friend WithEvents MenuItemSettingFont As ToolStripMenuItem
   Friend WithEvents FontDialog1 As FontDialog
+  Friend WithEvents MenuItemEdit As ToolStripMenuItem
+  Friend WithEvents MenuItemEditUndo As ToolStripMenuItem
+  Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
+  Friend WithEvents MenuItemEditCut As ToolStripMenuItem
+  Friend WithEvents MenuItemEditCopy As ToolStripMenuItem
+  Friend WithEvents MenuItemEditPaste As ToolStripMenuItem
+  Friend WithEvents MenuItemEditDelete As ToolStripMenuItem
+  Friend WithEvents MenuItemEditSelectAll As ToolStripMenuItem
 End Class
