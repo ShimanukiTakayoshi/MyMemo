@@ -22,6 +22,7 @@ Partial Class Form1
   'コード エディターを使って変更しないでください。
   <System.Diagnostics.DebuggerStepThrough()> _
   Private Sub InitializeComponent()
+    Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
     Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
     Me.MenuItemFile = New System.Windows.Forms.ToolStripMenuItem()
     Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
@@ -48,6 +49,12 @@ Partial Class Form1
     Me.MenuItemHelpReadMe = New System.Windows.Forms.ToolStripMenuItem()
     Me.MenuItemHelpWeb = New System.Windows.Forms.ToolStripMenuItem()
     Me.MenuItemHelpVersion = New System.Windows.Forms.ToolStripMenuItem()
+    Me.MenuItemFilePrintPreview = New System.Windows.Forms.ToolStripMenuItem()
+    Me.MenuItemFilePrint = New System.Windows.Forms.ToolStripMenuItem()
+    Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+    Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
+    Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
+    Me.PrintPreviewDialog1 = New System.Windows.Forms.PrintPreviewDialog()
     Me.MenuStrip1.SuspendLayout()
     Me.SuspendLayout()
     '
@@ -62,7 +69,7 @@ Partial Class Form1
     '
     'MenuItemFile
     '
-    Me.MenuItemFile.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.MenuItemFileOpen, Me.MenuItemSave, Me.MenuItemFileSaveAs, Me.ToolStripSeparator1, Me.MenuItemExit})
+    Me.MenuItemFile.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.MenuItemFileOpen, Me.MenuItemSave, Me.MenuItemFileSaveAs, Me.ToolStripSeparator1, Me.MenuItemFilePrintPreview, Me.MenuItemFilePrint, Me.ToolStripSeparator3, Me.MenuItemExit})
     Me.MenuItemFile.Name = "MenuItemFile"
     Me.MenuItemFile.Size = New System.Drawing.Size(66, 20)
     Me.MenuItemFile.Text = "ファイル(&F)"
@@ -208,6 +215,40 @@ Partial Class Form1
     Me.MenuItemHelpVersion.Size = New System.Drawing.Size(200, 22)
     Me.MenuItemHelpVersion.Text = "バージョン情報(&V)..."
     '
+    'MenuItemFilePrintPreview
+    '
+    Me.MenuItemFilePrintPreview.Name = "MenuItemFilePrintPreview"
+    Me.MenuItemFilePrintPreview.Size = New System.Drawing.Size(186, 22)
+    Me.MenuItemFilePrintPreview.Text = "印刷プレビュー(&V)..."
+    '
+    'MenuItemFilePrint
+    '
+    Me.MenuItemFilePrint.Name = "MenuItemFilePrint"
+    Me.MenuItemFilePrint.Size = New System.Drawing.Size(186, 22)
+    Me.MenuItemFilePrint.Text = "印刷(&P)..."
+    '
+    'ToolStripSeparator3
+    '
+    Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+    Me.ToolStripSeparator3.Size = New System.Drawing.Size(183, 6)
+    '
+    'PrintDocument1
+    '
+    '
+    'PrintDialog1
+    '
+    Me.PrintDialog1.UseEXDialog = True
+    '
+    'PrintPreviewDialog1
+    '
+    Me.PrintPreviewDialog1.AutoScrollMargin = New System.Drawing.Size(0, 0)
+    Me.PrintPreviewDialog1.AutoScrollMinSize = New System.Drawing.Size(0, 0)
+    Me.PrintPreviewDialog1.ClientSize = New System.Drawing.Size(400, 300)
+    Me.PrintPreviewDialog1.Enabled = True
+    Me.PrintPreviewDialog1.Icon = CType(resources.GetObject("PrintPreviewDialog1.Icon"), System.Drawing.Icon)
+    Me.PrintPreviewDialog1.Name = "PrintPreviewDialog1"
+    Me.PrintPreviewDialog1.Visible = False
+    '
     'Form1
     '
     Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
@@ -251,4 +292,10 @@ Partial Class Form1
   Friend WithEvents MenuItemHelpReadMe As ToolStripMenuItem
   Friend WithEvents MenuItemHelpWeb As ToolStripMenuItem
   Friend WithEvents MenuItemHelpVersion As ToolStripMenuItem
+  Friend WithEvents MenuItemFilePrintPreview As ToolStripMenuItem
+  Friend WithEvents MenuItemFilePrint As ToolStripMenuItem
+  Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
+  Friend WithEvents PrintDocument1 As Printing.PrintDocument
+  Friend WithEvents PrintDialog1 As PrintDialog
+  Friend WithEvents PrintPreviewDialog1 As PrintPreviewDialog
 End Class

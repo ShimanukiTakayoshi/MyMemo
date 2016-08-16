@@ -3,6 +3,7 @@
   Const RegistryKey As String = "Software\NikkeiSoftware\" & ApplicationName
   Private FilePath As String
   Private FileNameValue As String
+  Private PrintString As String
 
   Private Property FileName As String
     Get
@@ -31,6 +32,10 @@
 
   Private Sub UpdateStatus()
     Dim s = ApplicationName
+    Dim b = TextBoxMain.TextLength = 0
+    MenuItemFilePrint.Enabled = Not b
+    MenuItemFilePrintPreview.Enabled = Not b
+
     If FileName <> "" Then
       s &= " - " & FileName
     End If
@@ -75,6 +80,8 @@
     Const initialHeight = 200
     Me.MinimumSize = New Size(initialWidth, initialHeight)
     MenuItemEdit_DropDownOpening(sender, e)
+    PrintDialog1.Document = PrintDocument1
+    PrintPreviewDialog1.Document = PrintDocument1
   End Sub
 
   Private Sub MenuItemExit_Click(sender As Object, e As EventArgs) Handles MenuItemExit.Click
@@ -208,5 +215,41 @@
 
   Private Sub MenuItemHelpWeb_Click(sender As Object, e As EventArgs) Handles MenuItemHelpWeb.Click
     Process.Start("http://www.yahoo.co.jp/")
+  End Sub
+
+  Private Sub MenuItemHelpVersion_Click(sender As Object, e As EventArgs) Handles MenuItemHelpVersion.Click
+    MessageBox.Show(ApplicationName & " 0.01" & vbCrLf & "(c)2016 Shimanuki Takayoshi", "バージョン情報")
+  End Sub
+
+  Private Sub MenuItemFilePrint_Click(sender As Object, e As EventArgs) Handles MenuItemFilePrint.Click
+    If DialogResult.OK = PrintDialog1.ShowDialog Then
+      SetPrintDocument1()
+      PrintDocument1.Print()
+    End If
+  End Sub
+
+  Private Sub SetPrintDocument1()
+    PrintString = TextBoxMain.Text
+    PrintDocument1.DefaultPageSettings.Margins = New Printing.Margins(20, 60, 20, 60)
+    PrintDocument1.DocumentName = FileName
+  End Sub
+
+  Private Sub PrintDocument1_PrintPage(sender As Object, e As Printing.PrintPageEventArgs) Handles PrintDocument1.PrintPage
+    Dim charactersOnPage As Integer = 0
+    Dim linePerPage As Integer = 0
+    e.Graphics.MeasureString(PrintString, TextBoxMain.Font, e.MarginBounds.Size, StringFormat.GenericTypographic, charactersOnPage, linePerPage)
+    e.Graphics.DrawString(PrintString, TextBoxMain.Font, Brushes.Black, e.MarginBounds, StringFormat.GenericTypographic)
+    PrintString = PrintString.Substring(charactersOnPage)
+    If PrintString.Length > 0 Then
+      e.HasMorePages = True
+    Else
+      e.HasMorePages = False
+      PrintString = TextBoxMain.Text
+    End If
+  End Sub
+
+  Private Sub MenuItemFilePrintPreview_Click(sender As Object, e As EventArgs) Handles MenuItemFilePrintPreview.Click
+    SetPrintDocument1()
+    PrintPreviewDialog1.ShowDialog()
   End Sub
 End Class
