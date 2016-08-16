@@ -195,4 +195,18 @@
   Private Sub MenuItemEdit_DropDownClosed(sender As Object, e As EventArgs) Handles MenuItemEdit.DropDownClosed
     MenuItemEditDelete.Enabled = False
   End Sub
+
+  Private Sub MenuItemHelpReadMe_Click(sender As Object, e As EventArgs) Handles MenuItemHelpReadMe.Click
+    Dim s As String = IO.Path.GetDirectoryName(Application.ExecutablePath)
+    s = IO.Path.Combine(s, "README.TXT")
+    If IO.File.Exists(s) Then
+      Process.Start(s)
+    Else
+      MessageBox.Show(s & "が見つかりません", ApplicationName)
+    End If
+  End Sub
+
+  Private Sub MenuItemHelpWeb_Click(sender As Object, e As EventArgs) Handles MenuItemHelpWeb.Click
+    Process.Start("http://www.yahoo.co.jp/")
+  End Sub
 End Class

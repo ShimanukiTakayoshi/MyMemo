@@ -30,26 +30,30 @@ Partial Class Form1
     Me.MenuItemFileSaveAs = New System.Windows.Forms.ToolStripMenuItem()
     Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
     Me.MenuItemExit = New System.Windows.Forms.ToolStripMenuItem()
+    Me.MenuItemEdit = New System.Windows.Forms.ToolStripMenuItem()
+    Me.MenuItemEditUndo = New System.Windows.Forms.ToolStripMenuItem()
+    Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+    Me.MenuItemEditCut = New System.Windows.Forms.ToolStripMenuItem()
+    Me.MenuItemEditCopy = New System.Windows.Forms.ToolStripMenuItem()
+    Me.MenuItemEditPaste = New System.Windows.Forms.ToolStripMenuItem()
+    Me.MenuItemEditDelete = New System.Windows.Forms.ToolStripMenuItem()
+    Me.MenuItemEditSelectAll = New System.Windows.Forms.ToolStripMenuItem()
     Me.設定SToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
     Me.MenuItemSettingFont = New System.Windows.Forms.ToolStripMenuItem()
     Me.TextBoxMain = New System.Windows.Forms.TextBox()
     Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
     Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
     Me.FontDialog1 = New System.Windows.Forms.FontDialog()
-    Me.MenuItemEdit = New System.Windows.Forms.ToolStripMenuItem()
-    Me.MenuItemEditUndo = New System.Windows.Forms.ToolStripMenuItem()
-    Me.MenuItemEditCut = New System.Windows.Forms.ToolStripMenuItem()
-    Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-    Me.MenuItemEditCopy = New System.Windows.Forms.ToolStripMenuItem()
-    Me.MenuItemEditPaste = New System.Windows.Forms.ToolStripMenuItem()
-    Me.MenuItemEditDelete = New System.Windows.Forms.ToolStripMenuItem()
-    Me.MenuItemEditSelectAll = New System.Windows.Forms.ToolStripMenuItem()
+    Me.MenuItemHelp = New System.Windows.Forms.ToolStripMenuItem()
+    Me.MenuItemHelpReadMe = New System.Windows.Forms.ToolStripMenuItem()
+    Me.MenuItemHelpWeb = New System.Windows.Forms.ToolStripMenuItem()
+    Me.MenuItemHelpVersion = New System.Windows.Forms.ToolStripMenuItem()
     Me.MenuStrip1.SuspendLayout()
     Me.SuspendLayout()
     '
     'MenuStrip1
     '
-    Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuItemFile, Me.MenuItemEdit, Me.設定SToolStripMenuItem})
+    Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuItemFile, Me.MenuItemEdit, Me.設定SToolStripMenuItem, Me.MenuItemHelp})
     Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
     Me.MenuStrip1.Name = "MenuStrip1"
     Me.MenuStrip1.Size = New System.Drawing.Size(284, 24)
@@ -101,30 +105,6 @@ Partial Class Form1
     Me.MenuItemExit.Size = New System.Drawing.Size(186, 22)
     Me.MenuItemExit.Text = "終了(&X)"
     '
-    '設定SToolStripMenuItem
-    '
-    Me.設定SToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuItemSettingFont})
-    Me.設定SToolStripMenuItem.Name = "設定SToolStripMenuItem"
-    Me.設定SToolStripMenuItem.Size = New System.Drawing.Size(57, 20)
-    Me.設定SToolStripMenuItem.Text = "設定(&S)"
-    '
-    'MenuItemSettingFont
-    '
-    Me.MenuItemSettingFont.Name = "MenuItemSettingFont"
-    Me.MenuItemSettingFont.Size = New System.Drawing.Size(152, 22)
-    Me.MenuItemSettingFont.Text = "フォント(&F)"
-    '
-    'TextBoxMain
-    '
-    Me.TextBoxMain.Location = New System.Drawing.Point(42, 38)
-    Me.TextBoxMain.Name = "TextBoxMain"
-    Me.TextBoxMain.Size = New System.Drawing.Size(100, 19)
-    Me.TextBoxMain.TabIndex = 1
-    '
-    'OpenFileDialog1
-    '
-    Me.OpenFileDialog1.FileName = "OpenFileDialog1"
-    '
     'MenuItemEdit
     '
     Me.MenuItemEdit.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuItemEditUndo, Me.ToolStripSeparator2, Me.MenuItemEditCut, Me.MenuItemEditCopy, Me.MenuItemEditPaste, Me.MenuItemEditDelete, Me.MenuItemEditSelectAll})
@@ -139,17 +119,17 @@ Partial Class Form1
     Me.MenuItemEditUndo.Size = New System.Drawing.Size(183, 22)
     Me.MenuItemEditUndo.Text = "元に戻す(&U)"
     '
+    'ToolStripSeparator2
+    '
+    Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+    Me.ToolStripSeparator2.Size = New System.Drawing.Size(180, 6)
+    '
     'MenuItemEditCut
     '
     Me.MenuItemEditCut.Name = "MenuItemEditCut"
     Me.MenuItemEditCut.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.X), System.Windows.Forms.Keys)
     Me.MenuItemEditCut.Size = New System.Drawing.Size(183, 22)
     Me.MenuItemEditCut.Text = "切り取り(&X)"
-    '
-    'ToolStripSeparator2
-    '
-    Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-    Me.ToolStripSeparator2.Size = New System.Drawing.Size(180, 6)
     '
     'MenuItemEditCopy
     '
@@ -178,6 +158,55 @@ Partial Class Form1
     Me.MenuItemEditSelectAll.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.A), System.Windows.Forms.Keys)
     Me.MenuItemEditSelectAll.Size = New System.Drawing.Size(183, 22)
     Me.MenuItemEditSelectAll.Text = "すべて選択(&A)"
+    '
+    '設定SToolStripMenuItem
+    '
+    Me.設定SToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuItemSettingFont})
+    Me.設定SToolStripMenuItem.Name = "設定SToolStripMenuItem"
+    Me.設定SToolStripMenuItem.Size = New System.Drawing.Size(57, 20)
+    Me.設定SToolStripMenuItem.Text = "設定(&S)"
+    '
+    'MenuItemSettingFont
+    '
+    Me.MenuItemSettingFont.Name = "MenuItemSettingFont"
+    Me.MenuItemSettingFont.Size = New System.Drawing.Size(121, 22)
+    Me.MenuItemSettingFont.Text = "フォント(&F)"
+    '
+    'TextBoxMain
+    '
+    Me.TextBoxMain.Location = New System.Drawing.Point(42, 38)
+    Me.TextBoxMain.Name = "TextBoxMain"
+    Me.TextBoxMain.Size = New System.Drawing.Size(100, 19)
+    Me.TextBoxMain.TabIndex = 1
+    '
+    'OpenFileDialog1
+    '
+    Me.OpenFileDialog1.FileName = "OpenFileDialog1"
+    '
+    'MenuItemHelp
+    '
+    Me.MenuItemHelp.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuItemHelpReadMe, Me.MenuItemHelpWeb, Me.MenuItemHelpVersion})
+    Me.MenuItemHelp.Name = "MenuItemHelp"
+    Me.MenuItemHelp.Size = New System.Drawing.Size(65, 20)
+    Me.MenuItemHelp.Text = "ヘルプ(&H)"
+    '
+    'MenuItemHelpReadMe
+    '
+    Me.MenuItemHelpReadMe.Name = "MenuItemHelpReadMe"
+    Me.MenuItemHelpReadMe.Size = New System.Drawing.Size(200, 22)
+    Me.MenuItemHelpReadMe.Text = "README.TXTの表示(&R)..."
+    '
+    'MenuItemHelpWeb
+    '
+    Me.MenuItemHelpWeb.Name = "MenuItemHelpWeb"
+    Me.MenuItemHelpWeb.Size = New System.Drawing.Size(200, 22)
+    Me.MenuItemHelpWeb.Text = "Webサイトの表示(&W)..."
+    '
+    'MenuItemHelpVersion
+    '
+    Me.MenuItemHelpVersion.Name = "MenuItemHelpVersion"
+    Me.MenuItemHelpVersion.Size = New System.Drawing.Size(200, 22)
+    Me.MenuItemHelpVersion.Text = "バージョン情報(&V)..."
     '
     'Form1
     '
@@ -218,4 +247,8 @@ Partial Class Form1
   Friend WithEvents MenuItemEditPaste As ToolStripMenuItem
   Friend WithEvents MenuItemEditDelete As ToolStripMenuItem
   Friend WithEvents MenuItemEditSelectAll As ToolStripMenuItem
+  Friend WithEvents MenuItemHelp As ToolStripMenuItem
+  Friend WithEvents MenuItemHelpReadMe As ToolStripMenuItem
+  Friend WithEvents MenuItemHelpWeb As ToolStripMenuItem
+  Friend WithEvents MenuItemHelpVersion As ToolStripMenuItem
 End Class
